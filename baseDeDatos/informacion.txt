@@ -1,0 +1,11 @@
+Carpeta archivos base:
+    Esta carpeta contiene un archivo "inventario.csv" el cual contine el inventario del Laboratorio de 
+    ingeneria industrial al trimestre 220, este archivo fue creado a partir del archivo
+    "Lista de Inventario 22O.xlsx" solo se extrajo el inventario y se guardo como archivo CSV para
+    poder extraer la informacion mas facilmente y poder crear la base de datos
+
+Carpeta scripts SQL:
+    Esta carpeta tiene los escripts necesarios para crear la base de datos, acontinuacion de enumeran
+    en el orden que deben ser ejecutados y una breve descripcion de lo que hacen
+    1) DBInventario1.0.0.sql Este archivo contiene la creacion de la base de datos
+    
