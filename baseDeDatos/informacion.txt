@@ -4,8 +4,25 @@ Carpeta archivos base:
     "Lista de Inventario 22O.xlsx" solo se extrajo el inventario y se guardo como archivo CSV para
     poder extraer la informacion mas facilmente y poder crear la base de datos
 
+    insercciones_areas_y_materiales.sql Este archivo contine Las areas, tipo de material y materiales
+    tomado del proyecto de integracion "Implementación de la Metodología de las 5 ́S en un Laboratorio de Docencia"
+    Hay que tener en cuenta que dicho proyecto ya tiene un tiempo y en el laboratorio se ha adquirido 
+    mas elementos, por dicha razon se creo un script en Python (comprobar_tipos_de_materiales.py)
+    que lo que hace es comparar lo que esta en los archivos "insercciones_areas_y_materiales.sql"
+    e "inventario.csv" para crear un nuevo SQL "insercciones_areas_y_materiales_completo.sql" en la carpeta scripts SQL
+    el cual contendra todos los materiales incluyendo los mas recientes del inventario
+
+    El script creacion_insert_localizaciones.py crea el archivo insercciones_localizaciones.sql
+    el cual tiene todas las insercciones para las localizaciones del proyecto de integracion 
+    y del inventario.csv
+
+    El script creacion_insert_inventario.py recorre todo el archivo inventario.csv y crea sentencias espeficicas para
+    cada elemento de inventario, el resultado es insercciones_inventario.sql
+
 Carpeta scripts SQL:
-    Esta carpeta tiene los escripts necesarios para crear la base de datos, acontinuacion de enumeran
+    Esta carpeta tiene los escripts necesarios para crear la base de datos, a continuación de enumeran
     en el orden que deben ser ejecutados y una breve descripcion de lo que hacen
     1) DBInventario1.0.0.sql Este archivo contiene la creacion de la base de datos
-    
+    2) insercciones_areas_y_materiales_completo.sql, inserta en las tablas, areas, materiales y comprobar_tipos_de_materiales
+    3) insercciones_localizaciones.sql, inserta las localizaciones y sublocalizaciones para cada area
+    4) insercciones_inventario.sql, inserta en la tabla inventario, este sql depende de que las demas tablas ya esten llenas
