@@ -1,3 +1,13 @@
+<?php
+$icono= match(basename($_SERVER['PHP_SELF'])){
+    'index.php' => '<i class="fa-solid fa-industry"></i>',
+    'inventario.php'=>'<i class="fa-solid fa-clipboard-list"></i>',
+    'cargarExcel.php'=> '<i class="fa-regular fa-file-excel"></i>',
+    default=>'<i class="fa-solid fa-otter"></i>'
+};
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +24,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><i class="fa-solid fa-industry"></i></a>
+            <a class="navbar-brand" href="index.php"><?= $icono ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
