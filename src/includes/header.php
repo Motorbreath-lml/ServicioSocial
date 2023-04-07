@@ -16,6 +16,7 @@ $icono= match(basename($_SERVER['PHP_SELF'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio de ingeniería industrial</title>
+    <link rel="icon" type="image/png" href="../src/assets/img/favicon-16x16.png" sizes="16x16">
     <!-- Enlazar con las hojas de estilo de bootstrap -->
     <link rel="stylesheet" href="../src/assets/css/bootstrap.min.css">
     <!-- Enlazar con la hoja de estilo de fontawesome -->

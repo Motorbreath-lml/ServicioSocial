@@ -31,17 +31,44 @@
                             <strong>Paso 2.</strong> Dar click en Export Data, como se muestra en la figura 2.
                         </p>
                         <figure class="figure col">
-                            <img src="../src/assets/img/2ExportarDatos.jpg" class="img-fluid" alt="Exportar Datos">
+                            <img src="../src/assets/img/2PantallaExportar.jpg" class="img-fluid" alt="Exportar Datos">
                             <figcaption class="figure-caption">Figura 2. Exportar datos</figcaption>
                         </figure>
                     </div>
                     <div class="row">
                         <p class="col">
-                            <strong>Paso 3.</strong> Una vez que se haya realizado el paso 2, aparecerá en la pantalla un mensaje como el que se muestra en la figura 3, esperar a el 100%.
+                            <strong>Paso 3.</strong> Una vez que se haya realizado el paso 2, aparecerá en la pantalla un mensaje como el que se muestra en la figura 3, el cual muestra el porcentaje de exportación de los datos.
                         </p>
                         <figure class="figure col">
-                            <img src="../src/assets/img/3ExportandoDatos.jpg" class="img-fluid" alt="Exportando datos en excel">
+                            <img src="../src/assets/img/3ExportarDatos.jpg" class="img-fluid" alt="Exportando datos en Excel">
                             <figcaption class="figure-caption">Figura 3. Exportando datos en excel</figcaption>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <p class="col">
+                            <strong>Paso 4.</strong> Al terminar la creacion del archivo en Excel, hay que salir de la aplicacion y en la pantalla de inicio del C72 esta un icono que no lleva a la aplicacion web para poder subir el archivo en Excel generado.
+                        </p>
+                        <figure class="figure col">
+                            <img src="../src/assets/img/4IconoAppWeb.jpg" class="img-fluid" alt="Acceso a la App Web">
+                            <figcaption class="figure-caption">Figura 4. Enlace a la aplicacion web</figcaption>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <p class="col">
+                            <strong>Paso 5.</strong> Una vez en la aplicacion web, se pulsa el menu desplegable que se ubica en la parte superior derecha, se mostrarn diferentes opciones, escogeremos la que dice Cargar Excel.
+                        </p>
+                        <figure class="figure col">
+                            <img src="../src/assets/img/4IconoAppWeb.jpg" class="img-fluid" alt="Menu de la aplicacion web">
+                            <figcaption class="figure-caption">Figura 5. Menu de la aplicacion web</figcaption>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <p class="col">
+                            <strong>Paso 6.</strong> Aparecera una nueva pagina, en la cual podmos subir un archivo en formato Excel.
+                        </p>
+                        <figure class="figure col">
+                            <img src="../src/assets/img/6PaginaSubirExcel.jpg" class="img-fluid" alt="Pagina subir Excel">
+                            <figcaption class="figure-caption">Figura 6. Pagina para subir un archivo en formato Excel</figcaption>
                         </figure>
                     </div>
                 </div>
