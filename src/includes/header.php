@@ -1,10 +1,13 @@
 <?php
-$icono= match(basename($_SERVER['PHP_SELF'])){
+$icono = match (basename($_SERVER['PHP_SELF'])) {
     'index.php' => '<i class="fa-solid fa-industry"></i>',
-    'inventario.php'=>'<i class="fa-solid fa-clipboard-list"></i>',
-    'cargarExcel.php'=> '<i class="fa-regular fa-file-excel"></i>',
-    default=>'<i class="fa-solid fa-otter"></i>'
+    'inventario.php' => '<i class="fa-solid fa-clipboard-list"></i>',
+    'cargarExcel.php' => '<i class="fa-regular fa-file-excel"></i>',
+    default => '<i class="fa-solid fa-otter"></i>'
 };
+
+//Para mostrar errores temporales y mensajes de informacion
+session_start();
 
 ?>
 
@@ -22,6 +25,7 @@ $icono= match(basename($_SERVER['PHP_SELF'])){
     <!-- Enlazar con la hoja de estilo de fontawesome -->
     <link rel="stylesheet" href="../src/assets/css/all.min.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container">
@@ -47,3 +51,24 @@ $icono= match(basename($_SERVER['PHP_SELF'])){
             </div>
         </div>
     </nav>
+
+    <!-- Mensajes Informativos que solo se mostraran si existen-->
+    <?php
+    if (isset($_SESSION['mensajes'])) {
+        $mensajes = $_SESSION['mensajes'];
+        foreach ($mensajes as $tipo => $mensaje_arr) {
+            foreach ($mensaje_arr as $mensaje) { ?>
+                <div class="alert alert-<?= $tipo ?> alert-dismissible fade show" role="alert">
+                    <?= $mensaje ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+    <?php }
+        }
+    }
+    ?>
+
+    <!-- Eliminar mensaje de sesion para que no se repitan una vez mostrados-->
+    <?php
+    unset($_SESSION['mensajes']);
+    ?>
+    <hr>

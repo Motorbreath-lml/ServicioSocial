@@ -18,7 +18,7 @@ $rutaDeExcel = __DIR__ . "\\excel_del_handler";
 # Crear si no existe
 if (!is_dir($rutaDeExcel)) {    
     if(!mkdir($rutaDeExcel, 0777, true)){
-        die('Fallo al crear las carpetas '. $rutaDeExcel);
+        die('Fallo al crear la carpeta '. $rutaDeExcel);
     }
 }
 
