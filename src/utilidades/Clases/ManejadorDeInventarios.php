@@ -18,26 +18,23 @@ class ManejadorDeInventarios
     public static function guardarInventarioComoJSON($rutaArchivo, &$alertas)
     {
         // Abre el archivo de Excel.
-        $spreadsheet = PhpOffice\PhpSpreadsheet\IOFactory::load($rutaArchivo);
+        $spreadsheet = PhpOffice\PhpSpreadsheet\IOFactory::load($rutaArchivo);       
         
-        // Obtiene los valores de la columna A, empezando desde la fila 2 (excluyendo la fila 1 que es el encabezado).
         $worksheet = $spreadsheet->getActiveSheet();
-        // $numeroFilas = $worksheet->getHighestColumn();
-        // $elementosLeidos = array();
-        // for ($i=1; $i < $numeroFilas; $i++) { 
-        //     $elementosLeidos[] = $worksheet->getCellByColumnAndRow(1,$i);
-        // }
-
 
         $columnaA = $worksheet->getColumnIterator('A', 'A');
         $columnaA->next();
         $elementosLeidos = array();
-        foreach ($columnaA as $cell) {
-            $elemento = $cell;
-            if (!empty($elemento)) {
-                $elementosLeidos[] = $elemento;
-            }
+        foreach ($columnaA as $row) {
+            $cellIterator = $row->getCellIterator();
+            foreach($cellIterator as $cell){
+                $elemento=$cell->getValue();
+                if (!empty($elemento)) {
+                    $elementosLeidos[] = $elemento;
+                }
+            }            
         }
+
         
         // Crea el arreglo asociativo con los elementos leídos.
         $data = array(
