@@ -2,9 +2,6 @@
 
 //Cargar los elementos de la carpeta vendor
 require '../../vendor/autoload.php';
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ManejadorDeInventarios
 {    
@@ -23,13 +20,12 @@ class ManejadorDeInventarios
         $worksheet = $spreadsheet->getActiveSheet();
 
         $columnaA = $worksheet->getColumnIterator('A', 'A');
-        $columnaA->next();
         $elementosLeidos = array();
         foreach ($columnaA as $row) {
             $cellIterator = $row->getCellIterator();
             foreach($cellIterator as $cell){
                 $elemento=$cell->getValue();
-                if (!empty($elemento)) {
+                if (!empty($elemento)&&$elemento!='EPC') {
                     $elementosLeidos[] = $elemento;
                 }
             }            
