@@ -1,8 +1,8 @@
 <?php
 $icono = match (basename($_SERVER['PHP_SELF'])) {
     'index.php' => '<i class="fa-solid fa-industry"></i>',
-    'inventario.php' => '<i class="fa-solid fa-clipboard-list"></i>',
-    'cargarExcel.php' => '<i class="fa-regular fa-file-excel"></i>',
+    'inventariosJSON.php' => '<i class="fa-solid fa-clipboard-list"></i>',
+    'cargarExcel.php' => '<i class="fa-solid fa-upload"></i>',
     default => '<i class="fa-solid fa-otter"></i>'
 };
 
@@ -42,7 +42,7 @@ session_start();
                         <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == 'cargarExcel.php') echo 'active'; ?>" href="cargarExcel.php">Cargar Excel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == 'contacto.php') echo 'active'; ?>" href="contacto.php">Contacto</a>
+                        <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == 'inventariosJSON.php') echo 'active'; ?>" href="inventariosJSON.php">Inventarios</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="contacto.php">Prueba</a>

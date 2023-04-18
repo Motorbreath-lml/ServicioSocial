@@ -31,6 +31,14 @@ class ManejadorDeInventarios
             }            
         }
 
+        //Elementos Etiquetados
+
+        //Elementos Etiquetados NO leidos
+
+        //Elementos NoEtiquetados
+
+        //Elementos no reconocidos
+
         
         // Crea el arreglo asociativo con los elementos leídos.
         $data = array(

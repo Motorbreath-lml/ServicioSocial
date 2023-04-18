@@ -46,12 +46,14 @@ if(!preg_match("/^.*\.xlsx?$/",$nombreArchivo)){
 }
 
 //Asociar la instancia de la clase AlertasDeMensajes a la sesion
+$localizacion="";
 
 if($seGuardoArchivo && $existeCarpeta){
-    ManejadorDeInventarios::guardarInventarioComoJSON($nuevaUbicacion, $alertas);
-    $_SESSION['mensajes'] = $alertas->obtenerMensajes();
-    header('Location: ../../public/inventariosJSON.php');
-}else{
-    $_SESSION['mensajes'] = $alertas->obtenerMensajes();
-    header('Location: ../../public/cargarExcel.php');
+    ManejadorDeInventarios::guardarInventarioComoJSON($nuevaUbicacion, $alertas);    
+    $localizacion='inventariosJSON.php';
+}else{    
+    $localizacion='cargarExcel.php';
 }
+
+$_SESSION['mensajes'] = $alertas->obtenerMensajes();
+header('Location: ../../public/'.$localizacion);
