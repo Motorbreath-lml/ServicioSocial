@@ -2,6 +2,7 @@
 
 //Cargar los elementos de la carpeta vendor
 require '../../vendor/autoload.php';
+require 'FuncionesBaseDeDatos.php';
 
 class ManejadorDeInventarios
 {    
@@ -31,18 +32,20 @@ class ManejadorDeInventarios
             }            
         }
 
-        //Elementos Etiquetados
-
-        //Elementos Etiquetados NO leidos
+        //Elementos Etiquetados     
+        $elementosEtiquetados=FuncionesBaseDeDatos::obtenerElementosEtiquetados($alertas);
 
         //Elementos NoEtiquetados
+
+        //Elementos Etiquetados NO leidos
 
         //Elementos no reconocidos
 
         
         // Crea el arreglo asociativo con los elementos leídos.
         $data = array(
-            'elementosLeidos' => $elementosLeidos
+            'elementosLeidos' => $elementosLeidos,
+            'elementosEtiquetados'=>$elementosEtiquetados
         );
         
         // Convierte el arreglo a JSON.
