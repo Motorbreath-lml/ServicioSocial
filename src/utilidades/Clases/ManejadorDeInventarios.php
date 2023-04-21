@@ -36,16 +36,21 @@ class ManejadorDeInventarios
         $elementosEtiquetados=FuncionesBaseDeDatos::obtenerElementosEtiquetados($alertas);
 
         //Elementos NoEtiquetados
+        $elementosNoEtiquetados=FuncionesBaseDeDatos::obtenerElementosNoEtiquetados($alertas);
 
         //Elementos Etiquetados NO leidos
+        $elementosEtiquetadosNoLeidos=array_diff($elementosEtiquetados,$elementosLeidos);
 
         //Elementos no reconocidos
-
+        $elementosNoReconocidos=array_diff($elementosLeidos,$elementosEtiquetados,$elementosNoEtiquetados);
         
-        // Crea el arreglo asociativo con los elementos leídos.
+        // Crea el arreglo asociativo con los elementos necesarios para elaborar un inventario
         $data = array(
             'elementosLeidos' => $elementosLeidos,
-            'elementosEtiquetados'=>$elementosEtiquetados
+            'elementosEtiquetados'=>$elementosEtiquetados,
+            'elementosEtiquetadosNoLeidos'=>$elementosEtiquetadosNoLeidos,
+            'elementosNoEtiquetados'=>$elementosNoEtiquetados,
+            'elementosNoReconocidos'=>$elementosNoReconocidos
         );
         
         // Convierte el arreglo a JSON.

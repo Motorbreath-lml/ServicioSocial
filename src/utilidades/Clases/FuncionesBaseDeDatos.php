@@ -43,6 +43,28 @@ class FuncionesBaseDeDatos
         return $filas;
     }
 
+    public static function obtenerElementosNOEtiquetados(AlertasDeMensajes &$mensajes)
+    {
+        self::conectar($mensajes);
+
+        $sql="SELECT id_inventario FROM inventario WHERE etiquetado= false";
+
+        $resultado = mysqli_query(self::$conexion, $sql);
+        $filas = array();
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                $filas[] = $fila['id_inventario'];
+            }
+        } else {
+            $mensajes->agregarMensajeDanger("Error al ejecutar consulta: " . mysqli_error(self::$conexion));
+        }
+
+        self::desconectar();
+
+        return $filas;
+    }
+
     // public static function ejecutarInsert($sql)
     // {
     //     self::conectar();
