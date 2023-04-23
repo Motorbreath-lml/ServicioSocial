@@ -3,6 +3,7 @@ $icono = match (basename($_SERVER['PHP_SELF'])) {
     'index.php' => '<i class="fa-solid fa-industry"></i>',
     'inventariosJSON.php' => '<i class="fa-solid fa-clipboard-list"></i>',
     'cargarExcel.php' => '<i class="fa-solid fa-upload"></i>',
+    'detalleJSON.php'=>'<i class="fa-solid fa-clipboard-check"></i>',
     default => '<i class="fa-solid fa-otter"></i>'
 };
 

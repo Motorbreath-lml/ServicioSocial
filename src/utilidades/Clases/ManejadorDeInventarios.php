@@ -25,7 +25,7 @@ class ManejadorDeInventarios
         foreach ($columnaA as $row) {
             $cellIterator = $row->getCellIterator();
             foreach($cellIterator as $cell){
-                $elemento=$cell->getValue();
+                $elemento=strval($cell->getValue());
                 if (!empty($elemento)&&$elemento!='EPC') {
                     $elementosLeidos[] = $elemento;
                 }
@@ -41,6 +41,9 @@ class ManejadorDeInventarios
         //Elementos Etiquetados NO leidos
         $elementosEtiquetadosNoLeidos=array_diff($elementosEtiquetados,$elementosLeidos);
 
+        //Elementos inventariados
+        $elementosInventariados=array_diff($elementosEtiquetados,$elementosEtiquetadosNoLeidos);
+
         //Elementos no reconocidos
         $elementosNoReconocidos=array_diff($elementosLeidos,$elementosEtiquetados,$elementosNoEtiquetados);
         
@@ -50,7 +53,8 @@ class ManejadorDeInventarios
             'elementosEtiquetados'=>$elementosEtiquetados,
             'elementosEtiquetadosNoLeidos'=>$elementosEtiquetadosNoLeidos,
             'elementosNoEtiquetados'=>$elementosNoEtiquetados,
-            'elementosNoReconocidos'=>$elementosNoReconocidos
+            'elementosNoReconocidos'=>$elementosNoReconocidos,
+            'elementosInventariados'=>$elementosInventariados
         );
         
         // Convierte el arreglo a JSON.
