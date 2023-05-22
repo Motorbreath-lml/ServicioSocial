@@ -39,13 +39,13 @@ class ManejadorDeInventarios
         $elementosNoEtiquetados=FuncionesBaseDeDatos::obtenerElementosNoEtiquetados($alertas);
 
         //Elementos Etiquetados NO leidos
-        $elementosEtiquetadosNoLeidos=array_diff($elementosEtiquetados,$elementosLeidos);
+        $elementosEtiquetadosNoLeidos=array_values(array_diff($elementosEtiquetados,$elementosLeidos));
 
         //Elementos inventariados
-        $elementosInventariados=array_diff($elementosEtiquetados,$elementosEtiquetadosNoLeidos);
+        $elementosInventariados=array_values(array_diff($elementosEtiquetados,$elementosEtiquetadosNoLeidos));
 
         //Elementos no reconocidos
-        $elementosNoReconocidos=array_diff($elementosLeidos,$elementosEtiquetados,$elementosNoEtiquetados);
+        $elementosNoReconocidos=array_values(array_diff($elementosLeidos,$elementosEtiquetados,$elementosNoEtiquetados));
         
         // Crea el arreglo asociativo con los elementos necesarios para elaborar un inventario
         $data = array(

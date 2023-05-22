@@ -16,6 +16,14 @@ class FuncionesBaseDeDatos
         }
     }
 
+    private static function conectarSinMensajes()
+    {
+        self::$conexion = mysqli_connect(self::$host, self::$usuario, self::$password, self::$baseDatos);
+        if (mysqli_connect_errno()) {            
+            return("Error al conectar a la base de datos: " . mysqli_connect_error());            
+        }
+    }
+
     private static function desconectar()
     {
         mysqli_close(self::$conexion);
@@ -64,41 +72,4 @@ class FuncionesBaseDeDatos
 
         return $filas;
     }
-
-    // public static function ejecutarInsert($sql)
-    // {
-    //     self::conectar();
-
-    //     $resultado = mysqli_query(self::$conexion, $sql);
-    //     $insertId = mysqli_insert_id(self::$conexion);
-
-    //     if (!$resultado) {
-    //         echo "Error al ejecutar consulta: " . mysqli_error(self::$conexion);
-    //     }
-
-    //     self::desconectar();
-
-    //     return $insertId;
-    // }
-
-    // public static function ejecutarUpdate($sql)
-    // {
-    //     self::conectar();
-
-    //     $resultado = mysqli_query(self::$conexion, $sql);
-    //     $numFilasAfectadas = mysqli_affected_rows(self::$conexion);
-
-    //     if (!$resultado) {
-    //         echo "Error al ejecutar consulta: " . mysqli_error(self::$conexion);
-    //     }
-
-    //     self::desconectar();
-
-    //     return $numFilasAfectadas;
-    // }
-
-    // public static function ejecutarDelete($sql)
-    // {
-    //     return self::ejecutarUpdate($sql);
-    // }
 }
