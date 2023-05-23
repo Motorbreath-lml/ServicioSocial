@@ -45,6 +45,9 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == 'inventariosJSON.php') echo 'active'; ?>" href="inventariosJSON.php">Inventarios</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == 'etiquetar.php') echo 'active'; ?>" href="etiquetar.php">Etiquetar</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="contacto.php">Prueba</a>
                     </li>
