@@ -74,23 +74,17 @@ $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia 
 
 <div class="container text-center">
     <h4>Detalle JSON</h4>    
-    <div class="row">
-        <div class=" col-6">
-            <button class="btn btn-primary" onclick="obtenerDetalle('etiquetados_no_inventariados',<?=$nombreArchivo?>)">Elementos Etiquetados no Inventariados</button>
+    <div class="row justify-content-evenly">
+        <div class="col-6 col-md mb-3">
+            <button class="btn btn-primary" onclick="obtenerDetalle('continuarInventario',<?=$nombreArchivo?>)">Continuar con el inventario</button>
         </div>
-        <div class=" col-6">
-            <button class="btn btn-primary" onclick="obtenerDetalle('etiquetados_inventariados',<?=$nombreArchivo?>)">Elementos Etiquetados Inventariados</button>
+        <div class="col-6 col-md mb-3">
+            <button class="btn btn-primary">Editar inventario</button>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-6">
-            <button class="btn btn-primary" onclick="obtenerDetalle('no_etiquetados_no_inventariados',<?=$nombreArchivo?>)">Elementos no Etiquetados no Inventariados</button>
+        <div class="col-6 col-md mb-3">
+            <button class="btn btn-primary">Generar reporte</button>
         </div>
-        <div class="col-6">
-            <button class="btn btn-primary" onclick="obtenerDetalle('no_etiquetados_inventariados',<?=$nombreArchivo?>)">Elementos no Etiquetados Inventariados</button>
-        </div>
-    </div>
+    </div>    
 </div>
 
 

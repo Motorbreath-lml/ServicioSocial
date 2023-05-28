@@ -15,8 +15,8 @@ $archivos = array_diff($archivos, array('.', '..'));
 rsort($archivos);
 ?>
 
-<div class="table-responsive">
-    <table class="table table-striped table-sm">
+<div class="table-responsive container">
+    <table class="table table-striped align-middle table-sm">
         <thead>
             <tr>
                 <th scope="col">Nombre archivo</th>
