@@ -3,6 +3,7 @@
 
 <?php
 $nombreArchivo = $_GET['nombreArchivo'];
+echo '<script>let nombreArchivo = "' . $nombreArchivo . '";</script>'; //Variable para JS
 
 $nombreSinExtension = pathinfo($nombreArchivo, PATHINFO_FILENAME);
 
@@ -76,7 +77,7 @@ $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia 
     <h4>Detalle JSON</h4>    
     <div class="row justify-content-evenly">
         <div class="col-6 col-md mb-3">
-            <button class="btn btn-primary" onclick="obtenerDetalle('continuarInventario',<?=$nombreArchivo?>)">Continuar con el inventario</button>
+            <button class="btn btn-primary" onclick="obtenerDatos()">Continuar con el inventario</button>
         </div>
         <div class="col-6 col-md mb-3">
             <button class="btn btn-primary">Editar inventario</button>
@@ -87,7 +88,42 @@ $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia 
     </div>    
 </div>
 
+<div id="resultado"></div>
 
-<script src="../src/JS/detalleJSON.js"></script>
+<script>
+    function obtenerDatos() {
+    
+    // Obtener el valor de 'nombreArchivo' de la URL
+    let urlParams = new URLSearchParams(window.location.search);
+    let nombreArchivo = urlParams.get('nombreArchivo');
+
+    // Usar el valor en tu código
+    console.log(nombreArchivo); // Imprime el valor en la consola
+
+
+    // Enviar una solicitud al archivo PHP usando fetch
+    fetch("tuphparchivo.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nombreArchivo: nombreArchivo }),
+    })
+        .then(function (response) {
+            if (response.ok) {
+                return response.json(); // Si la respuesta es JSON
+                //return response.text(); // Si la respuesta es texto
+            }
+            throw new Error("Error al obtener los datos.");
+        })
+        .then(function (data) {
+            // Manipular los datos recibidos
+            mostrarDatos(data);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+    }
+</script>
 <!-- incluir el pie de pagina -->
 <?php include('../src/includes/footer.php') ?>
