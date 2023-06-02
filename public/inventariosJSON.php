@@ -3,7 +3,7 @@
 
 <?php
 // Directorio a listar
-$directorio = '../src/utilidades/inventariosJSON';
+$directorio = '../src/utilidades/archivos/archivosInventariosJSON';
 
 // Obtener el array de nombres de archivo en el directorio
 $archivos = scandir($directorio);
@@ -20,8 +20,7 @@ rsort($archivos);
         <thead>
             <tr>
                 <th scope="col">Nombre archivo</th>
-                <th scope="col">Elementos etiquetados no inventariados</th>
-                <th scope="col">Elementos no etiquetados no inventariados</th>
+                <th scope="col">Elementos No inventariados</th>
                 <th scope="col">Elementos inventariados</th>
             </tr>
         </thead>
@@ -34,13 +33,16 @@ rsort($archivos);
                 $url = 'detalleJSON.php?nombreArchivo=' . urlencode($archivo);
             ?>
                 <tr>
-                    <td scope="row"><a class="btn btn-secondary btn-sm" href="<?= $url?>"><?= $archivo ?></a></td>
-                    <td><?= count($json['elementosEtiquetadosNoLeidos']) ?></td>
-                    <td><?= count($json['elementosNoEtiquetados']) ?></td>
+                    <td scope="row">
+                        <a class="btn btn-secondary btn-sm" href="<?= $url?>">
+                            <?= $archivo ?>
+                        </a>
+                    </td>                    
+                    <td><?= count($json['elementosNoInventariados']) ?></td>
                     <td><?= count($json['elementosInventariados']) ?></td>
                 </tr>
 
-            <?php
+            <?php //Fin del Foreach
             }
             ?>
         </tbody>

@@ -14,7 +14,7 @@ $seGuardoArchivo=true;
 // El siguiente script permite crear un directorio en el cual se guardaran los archivos de Excel
 // Creacion de la ruta y carpeta en donde se guardan los archivos de excel provenientes del handler
 // En windows la ruta de un archivo es con \ pero hay que escapar la diagonal, con la misma diagonal \\
-$rutaDeExcel = __DIR__ . "\\archivosExcelDelC72";
+$rutaDeExcel = __DIR__ . "\\archivos\\archivosExcelDelC72";
 
 # Crear si no existe
 if (!is_dir($rutaDeExcel)) {    

@@ -21,40 +21,34 @@ class ManejadorDeInventarios
         $worksheet = $spreadsheet->getActiveSheet();
 
         $columnaA = $worksheet->getColumnIterator('A', 'A');
-        $elementosLeidos = array();
+        $elementosInventariados = array();
         foreach ($columnaA as $row) {
             $cellIterator = $row->getCellIterator();
             foreach($cellIterator as $cell){
                 $elemento=strval($cell->getValue());
                 if (!empty($elemento)&&$elemento!='EPC') {
-                    $elementosLeidos[] = $elemento;
+                    $elementosInventariados[$elemento] = ""; //La llave es el codigo del elemento y el valor las observaciones
                 }
             }            
         }
 
-        //Elementos Etiquetados     
-        $elementosEtiquetados=FuncionesBaseDeDatos::obtenerElementosEtiquetados($alertas);
+        //Todos los Elementos
+        $todosLosElementos= FuncionesBaseDeDatos::obtenerTodosLosElementos($alertas);
 
-        //Elementos NoEtiquetados
-        $elementosNoEtiquetados=FuncionesBaseDeDatos::obtenerElementosNoEtiquetados($alertas);
-
-        //Elementos Etiquetados NO leidos
-        $elementosEtiquetadosNoLeidos=array_values(array_diff($elementosEtiquetados,$elementosLeidos));
-
-        //Elementos inventariados
-        $elementosInventariados=array_values(array_diff($elementosEtiquetados,$elementosEtiquetadosNoLeidos));
+        //Elementos que faltan por inventariar
+        $elementosNoInventariados=array_values(array_diff($todosLosElementos,$elementosInventariados));
 
         //Elementos no reconocidos
-        $elementosNoReconocidos=array_values(array_diff($elementosLeidos,$elementosEtiquetados,$elementosNoEtiquetados));
+        $elementosNoReconocidos=array_values(array_diff(array_keys($elementosInventariados),$todosLosElementos));
+
+        //Limpiar deatos
+        $elementosInventariados=array_diff_key($elementosInventariados,array_flip($elementosNoReconocidos));
         
         // Crea el arreglo asociativo con los elementos necesarios para elaborar un inventario
         $data = array(
-            'elementosLeidos' => $elementosLeidos,
-            'elementosEtiquetados'=>$elementosEtiquetados,
-            'elementosEtiquetadosNoLeidos'=>$elementosEtiquetadosNoLeidos,
-            'elementosNoEtiquetados'=>$elementosNoEtiquetados,
             'elementosNoReconocidos'=>$elementosNoReconocidos,
-            'elementosInventariados'=>$elementosInventariados
+            'elementosInventariados'=>$elementosInventariados,
+            'elementosNoInventariados'=>$elementosNoInventariados
         );
         
         // Convierte el arreglo a JSON.
@@ -62,14 +56,16 @@ class ManejadorDeInventarios
         
         // Guarda el JSON en un archivo en la ruta especificada.
         $fecha = date('Y-m-d_H-i-s');
-        $rutaDeJSON = "inventariosJSON/$fecha.json";
+        $rutaDeJSON = "archivos/archivosInventariosJSON/$fecha.json";
         if (!file_exists(dirname($rutaDeJSON))) {
             mkdir(dirname($rutaDeJSON), 0777, true);
         }
+
+        //Guardar informacion en el archivo creado
         if (file_put_contents($rutaDeJSON, $json)) {
             $alertas->agregarMensajeSuccess("El archivo de inventario se ha guardado correctamente.");
         } else {
-            $alertas->agregarMensajeDanger("Error al guardar el archivo de inventario.");
+            $alertas->agregarMensajeDanger("Error al guardar el archivo de inventario. Ruta de guardado: ".$rutaDeJSON);
         }
     }
 }

@@ -29,6 +29,28 @@ class FuncionesBaseDeDatos
         mysqli_close(self::$conexion);
     }
 
+    public static function obtenerTodosLosElementos(AlertasDeMensajes &$mensajes)
+    {
+        self::conectar($mensajes);
+
+        $sql="SELECT id_inventario FROM inventario";
+
+        $resultado = mysqli_query(self::$conexion, $sql);
+        $filas = array();
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                $filas[] = $fila['id_inventario'];
+            }
+        } else {
+            $mensajes->agregarMensajeDanger("Error al ejecutar consulta: " . mysqli_error(self::$conexion));
+        }
+
+        self::desconectar();
+
+        return $filas;
+    }
+
     public static function obtenerElementosEtiquetados(AlertasDeMensajes &$mensajes)
     {
         self::conectar($mensajes);

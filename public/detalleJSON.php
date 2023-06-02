@@ -102,12 +102,12 @@ $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia 
 
 
     // Enviar una solicitud al archivo PHP usando fetch
-    fetch("tuphparchivo.php", {
+    fetch("../src/utilidades/detalleInventario.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nombreArchivo: nombreArchivo }),
+        body: JSON.stringify({ nombreArchivo: nombreArchivo, operacion:"continuarInventario" }),
     })
         .then(function (response) {
             if (response.ok) {

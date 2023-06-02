@@ -1,4 +1,4 @@
-<!-- incluir la cabezera de la pagina -->
+<!-- incluir la cabecera de la pagina -->
 <?php include('../src/includes/header.php') ?>
 
 <?php include('../src/includes/modalExportacion.php') ?>

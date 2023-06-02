@@ -57,6 +57,7 @@ session_start();
     </nav>
 
     <!-- Mensajes Informativos que solo se mostraran si existen-->
+    <div class="container">
     <?php
     if (isset($_SESSION['mensajes'])) {
         $mensajes = $_SESSION['mensajes'];
@@ -70,6 +71,7 @@ session_start();
         }
     }
     ?>
+    </div>
 
     <!-- Eliminar mensaje de sesion para que no se repitan una vez mostrados-->
     <?php

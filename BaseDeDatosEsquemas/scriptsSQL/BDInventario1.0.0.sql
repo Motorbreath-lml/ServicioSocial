@@ -89,7 +89,6 @@ CREATE TABLE IF NOT EXISTS `INVENTARIO_DB`.`INVENTARIO` (
   `material_id` INT NOT NULL,
   `digito_7` INT NOT NULL,
   `digito_8` INT NOT NULL,
-  `etiquetado` BOOLEAN NULL,
   CONSTRAINT `localizacion_inventario`
     FOREIGN KEY (`localizacion_id`)
     REFERENCES `INVENTARIO_DB`.`LOCALIZACIONES` (`id_localizacion`)
