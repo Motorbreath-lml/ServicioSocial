@@ -36,7 +36,7 @@ class ManejadorDeInventarios
         $todosLosElementos= FuncionesBaseDeDatos::obtenerTodosLosElementos($alertas);
 
         //Elementos que faltan por inventariar
-        $elementosNoInventariados=array_values(array_diff($todosLosElementos,$elementosInventariados));
+        $elementosNoInventariados=array_values(array_diff($todosLosElementos,array_keys($elementosInventariados)));
 
         //Elementos no reconocidos
         $elementosNoReconocidos=array_values(array_diff(array_keys($elementosInventariados),$todosLosElementos));

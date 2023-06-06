@@ -69,6 +69,10 @@ $hora = $dateTime->format("h:i A");
 
 // Generar el mensaje completo
 $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia . " de " . traducirMes($mes) . " del " . $anio . ", subido al servidor a las " . $hora;
+
+//Continuar con el inventario
+$url = 'inventario.php?nombreArchivo=' . urlencode($nombreArchivo) . '&operacion=';
+
 ?>
 
 <h5 class="text-center"><?=$mensaje?></h5>
@@ -77,7 +81,7 @@ $mensaje = "Inventario del día: " . traducirDiaSemana($diaSemana) . " " . $dia 
     <h4>Detalle JSON</h4>    
     <div class="row justify-content-evenly">
         <div class="col-6 col-md mb-3">
-            <button class="btn btn-primary" onclick="obtenerDatos()">Continuar con el inventario</button>
+            <a class="btn btn-primary" href="<?= $url .'continuar'?>">Continuar con el inventario</a>
         </div>
         <div class="col-6 col-md mb-3">
             <button class="btn btn-primary">Editar inventario</button>
