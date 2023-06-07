@@ -12,9 +12,11 @@ function continuarInventario($nombreArchivo) {
     //Hay que verificar si aun hay elementos para iventariar
     $primerosDiez = array_slice($json['elementosNoInventariados'], 0, 10);
 
-    echo '<pre>';
-    var_dump(FuncionesBaseDeDatos::obtenerDiezElementos(implode(', ',$primerosDiez)));
-    echo '</pre>';
+    return FuncionesBaseDeDatos::obtenerDiezElementos(implode(', ',$primerosDiez));
+
+    // echo '<pre>';
+    // var_dump(FuncionesBaseDeDatos::obtenerDiezElementos(implode(', ',$primerosDiez)));
+    // echo '</pre>';
 
     // // Ejemplo de obtención de valores ficticios
     // $codigo = "001";
